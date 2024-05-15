@@ -1,0 +1,62 @@
+{
+    "webTitle": "GoluのNav",
+    "copyRightText": "咕噜Golu",
+    "copyRightLink": "https://www.baidu.com",
+    "navList": [
+        {
+            "icon": "./icons/qunhui.ico",
+            "desc": "群辉Synology",
+            "url": "http://www.baidu.com"
+        },
+        {
+            "icon": "图标路径",
+            "desc": "网站名称",
+            "url": "网站链接"
+        },
+        {
+            "icon": "图标路径",
+            "desc": "网站名称",
+            "url": "网站链接"
+        },
+        {
+            "icon": "图标路径",
+            "desc": "网站名称",
+            "url": "网站链接"
+        },
+        {
+            "icon": "图标路径",
+            "desc": "网站名称",
+            "url": "网站链接"
+        },
+        {
+            "icon": "图标路径",
+            "desc": "网站名称",
+            "url": "网站链接"
+        },
+        {
+            "icon": "图标路径",
+            "desc": "网站名称",
+            "url": "网站链接"
+        },
+        {
+            "icon": "图标路径",
+            "desc": "网站名称",
+            "url": "网站链接"
+        },
+        {
+            "icon": "图标路径",
+            "desc": "网站名称",
+            "url": "网站链接"
+        },
+        {
+            "icon": "图标路径",
+            "desc": "网站名称",
+            "url": "网站链接"
+        },
+        {
+            "icon": "图标路径",
+            "desc": "网站名称",
+            "url": "网站链接"
+        }
+    ]
+}

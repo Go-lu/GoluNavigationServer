@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <style>
+    li{list-style:none}    //去除列表符号
+    *{margin: 0;padding:0;}  //去除默认填充
+    .op{
+      width:200px;
+      height:200px;
+      position:absolute;                     // 给盒子绝对定位
+      top:0;
+      left:0;
+      bottom:0;
+      right:0;
+      margin:auto;                               //使盒子居中
+      transform-style:preserve-3d;     //给大盒子添加3d效果
+      animation: op 10s linear infinite;   //给大盒子添加动画op
+    }
+    .op>li{
+      width:200px;
+      height:200px;
+      float:left;                                    //给盒子的面添加浮动
+      position:absolute;
+    }
+    .op>li:nth-child(1){                       //选择第一个li
+      background:aqua;
+      transform:translateY(100px)rotateX(90deg);      // 让li沿y轴移动100px沿x轴旋转90度
+      animation: op1 5s linear infinite;        //给li添加绑定动画op1,每5秒一个周期
+    }
+    .op>li:nth-child(2){
+      background:blueviolet;
+      transform:translateY(-100px)rotateX(90deg);
+      animation: op2 5s linear infinite;
+    }
+    .op>li:nth-child(3){
+      background:chartreuse;
+      transform:translateX(100px)rotateY(90deg);
+      animation: op3 5s linear infinite;
+    }
+    .op>li:nth-child(4){
+      background:khaki;
+      transform:translateX(-100px)rotateY(90deg);
+      animation: op4 5s linear infinite;
+    }
+    .op>li:nth-child(5){
+      background:fuchsia;
+      transform:translateZ(-100px);
+      animation:op5 5s linear infinite;
+    }
+    .op>li:nth-child(6){
+      background:forestgreen;
+      transform:translateZ(100px);
+      animation: op6 5s linear infinite;
+    }
+    @keyframes op{
+      from{transform:rotateX(0)rotateY(0);}
+      to{transform:rotateX(360deg)rotateY(360deg);}
+    }
+    @keyframes op1{
+      0%{transform:translateY(100px)rotateX(90deg);}
+      40%{transform:translateY(100px)rotateX(90deg);}
+      70%{transform:translateY(200px)rotateX(90deg);}
+      100%{transform:translateY(100px)rotateX(90deg);}
+    }
+    @keyframes op2{
+      0%{transform:translateY(-100px)rotateX(90deg);}
+      40%{transform:translateY(-100px)rotateX(90deg);}
+      70%{transform:translateY(-200px)rotateX(90deg);}
+      100%{transform:translateY(-100px)rotateX(90deg);}
+    }
+    @keyframes op3{
+      0%{transform:translateX;(100px)rotateY(90deg);}
+      40%{transform:translateX(100px)rotateY(90deg);}
+      70%{transform:translateX(200px)rotateY(90deg);}
+      100%{transform:translateX(100px)rotateY(90deg);}
+    }
+    @keyframes op4{
+      0%{transform:translateX(-100px)rotateY(90deg);}
+      40%{transform:translateX(-100px)rotateY(90deg);}
+      70%{transform:translateX(-200px)rotateY(90deg);}
+      100%{transform:translateX(-100px)rotateY(90deg);}
+    }
+    @keyframes op5{
+      0%{transform:translateZ(-100px);}
+      40%{transform:translateZ(-100px);}
+      70%{transform:translateZ(-200px);}
+      100%{transform:translateZ(-100px);}
+    }
+    @keyframes op6{
+      0%{transform:translateZ(100px);}
+      40%{transform:translateZ(100px);}
+      70%{transform:translateZ(200px);}
+      100%{transform:translateZ(100px);}
+    }
+  </style>
+</head>
+<body>
+<ul class="op">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+</body>
+</html>
