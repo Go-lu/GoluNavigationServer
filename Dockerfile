@@ -31,7 +31,7 @@ WORKDIR /app
 RUN rm -rf /tmp/app
 
 # 复制文件到运行目录
-COPY . /app/
+COPY . /app
 # 安装依赖
 RUN npm install
 
