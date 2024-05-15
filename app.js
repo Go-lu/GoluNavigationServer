@@ -7,8 +7,10 @@ const CryptoJS = require('crypto-js');
 const app = express();
 const NavService = require('./service/NavService');
 const NavDatabaseDTO = require('./DTO/NavDatabaseDTO');
-const logger = require('./utils/LoggerTool');
-const parseUrlTool = require('./utils/ParseUrlTool.js');
+import parseUrlTool from './utils/parseUrlTool'
+import logger from './utils/LoggerTool'
+// const logger = require('./utils/LoggerTool');
+// const parseUrlTool = require('./utils/ParseUrlTool.js');
 require('dotenv').config(); // 引入 .env 文件
 
 // 盐
