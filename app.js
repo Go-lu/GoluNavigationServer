@@ -8,7 +8,7 @@ const app = express();
 const NavService = require('./service/NavService');
 const NavDatabaseDTO = require('./DTO/NavDatabaseDTO');
 const logger = require('./utils/LoggerTool');
-const parseUrlTool = require('./utils/ParseUrlTool');
+const parseUrlTool = require('./utils/ParseUrlTool.js');
 require('dotenv').config(); // 引入 .env 文件
 
 // 盐
