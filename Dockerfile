@@ -16,7 +16,7 @@ RUN apk add --no-cache git
 WORKDIR /app
 
 # 克隆前端项目
-RUN git clone https://github.com/Go-lu/GoluNavigationWeb.git /tmp/app
+RUN git clone https://gitee.com/golu-ljg/golu-navigation-web.git /tmp/app
 
 # 进入临时目录，安装依赖并构建项目
 WORKDIR /tmp/app
