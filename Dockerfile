@@ -30,6 +30,11 @@ RUN mv dist /app/
 WORKDIR /app
 RUN rm -rf /tmp/app
 
+# 复制文件到运行目录
+COPY . /app/
+# 安装依赖
+RUN npm install
+
 # 暴露应用需要的端口
 EXPOSE 8082
 
