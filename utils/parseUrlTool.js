@@ -5,7 +5,7 @@
  */
 const axios = require('axios');
 const cheerio = require('cheerio');
-const logger = require('../utils/LoggerTool');
+const logger = require('/LoggerTool');
 
 /**
  * 解析网站
