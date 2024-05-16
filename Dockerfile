@@ -25,11 +25,10 @@ RUN apk add --no-cache \
     bash
 
 # 创建符号链接以确保 python 命令指向 python3
-RUN ln -sf /usr/bin/python3 /usr/bin/python && \
-    ln -sf /usr/bin/pip3 /usr/bin/pip
+RUN ln -sf /usr/bin/python3 /usr/bin/python
 
 # 确认安装的 Python 版本和构建工具
-RUN python --version && pip --version && make --version && g++ --version
+RUN python --version && make --version && g++ --version
 
 # ###############################################################
 
