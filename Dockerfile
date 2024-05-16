@@ -16,14 +16,23 @@ RUN apk add --no-cache git
 RUN apk add --no-cache openssl
 
 # ########## 安装Python3.8 ##################
-# 更新包列表并安装必要的软件包
-RUN apk update && \
-    apk add --no-cache \
-    build-base \
-    wget \
-    libffi-dev \
-    openssl-dev \
-    bash
+# 更新包列表
+RUN apk update
+
+# 安装基础构建工具
+RUN apk add --no-cache build-base
+
+# 安装 wget
+RUN apk add --no-cache wget
+
+# 安装 libffi-dev
+RUN apk add --no-cache libffi-dev
+
+# 安装 openssl-dev
+RUN apk add --no-cache openssl-dev
+
+# 安装 bash
+RUN apk add --no-cache bash
 
 # 下载并安装特定版本的 Python 3.8
 RUN wget https://www.python.org/ftp/python/3.8.10/Python-3.8.10.tgz && \
