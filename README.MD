@@ -40,32 +40,53 @@
 >   - 进入到项目根目录 `cd GoluNavigationServer`
 >   - 构建镜像 `docker build -t golunavserver .`
 >   - 运行镜像 
->     ~~~docker
->     docker run -d \
->     -p 8082:8082 \
->     -e WEBTITLE=GoluのNav \
->     -e COPYRIGHT_TEXT=咕噜Golu \
->     -e COPYRIGHT_LINK=https://www.golu-ljg.cn \
->     -e WEBSITE_PASSWORD=123456 \
->     -e PORT=8082 \
->     -e BAIDU_AK=aaaaaaaaaaaaaaadddddddddd \
->     -e HEFENG_KEY=dfefeffffffffffffffffff \
->     --name golunavserver \
->     golunavserver
->     ~~~
->     **指令说明：**
->     ~~~docker
->     docker run -d \ # 运行容器 -d 后台运行
->     -p 8082:8082 \ # 映射端口 前面的8082是宿主机端口 后面的8082是容器端口
->     -e WEBTITLE=GoluのNav \ # 网页title
->     -e COPYRIGHT_TEXT=咕噜Golu \ # 版权文字
->     -e COPYRIGHT_LINK=https://www.golu-ljg.cn \ # 点击版权后跳转的链接
->     -e WEBSITE_PASSWORD=123456 \ # 网站密码，用于修改配置信息
->     -e PORT=8082 \ # 网站运行的端口
->     -e BAIDU_AK=aaaaaaaaaaaaaaadddddddddd \ # 百度地图ak，请更换为自己的ak，创建应用时选择服务端，地址：https://lbsyun.baidu.com/apiconsole/center#/home
->     -e HEFENG_KEY=dfefeffffffffffffffffff \ # 和风天气key， 请更换为自己的key，创建应用时选择服务端，地址：https://dev.heweather.com/
->     --name golunavserver \ # 容器名称
->     golunavserver # 镜像名称，根据打包出的镜像名修改
->     ~~~
+>     - 方式一(docker run)：
+>       ~~~docker
+>       docker run -d \
+>           -p 8082:8082 \
+>           -e WEBTITLE=GoluのNav \
+>           -e COPYRIGHT_TEXT=咕噜Golu \
+>           -e COPYRIGHT_LINK=https://www.golu-ljg.cn \
+>           -e WEBSITE_PASSWORD=123456 \
+>           -e PORT=8082 \
+>           -e BAIDU_AK=aaaaaaaaaaaaaaadddddddddd \
+>           -e HEFENG_KEY=dfefeffffffffffffffffff \
+>           --name golunavserver \
+>           golunavserver
+>       ~~~
+>       **指令说明：**
+>       ~~~docker
+>       docker run -d \ # 运行容器 -d 后台运行
+>           -p 8082:8082 \ # 映射端口 前面的8082是宿主机端口 后面的8082是容器端口
+>           -e WEBTITLE=GoluのNav \ # 网页title
+>           -e COPYRIGHT_TEXT=咕噜Golu \ # 版权文字
+>           -e COPYRIGHT_LINK=https://www.golu-ljg.cn \ # 点击版权后跳转的链接
+>           -e WEBSITE_PASSWORD=123456 \ # 网站密码，用于修改配置信息
+>           -e PORT=8082 \ # 网站运行的端口
+>           -e BAIDU_AK=aaaaaaaaaaaaaaadddddddddd \ # 百度地图ak，请更换为自己的ak，创建应用时选择服务端，地址：https://lbsyun.baidu.com/apiconsole/center#/home
+>           -e HEFENG_KEY=dfefeffffffffffffffffff \ # 和风天气key， 请更换为自己的key，创建应用时选择服务端，地址：https://dev.heweather.com/
+>           --name golunavserver \ # 容器名称
+>           golunavserver # 镜像名称，根据打包出的镜像名修改
+>       ~~~
+>       
+>       - 方式二(docker-compose.yml)：
+>         ~~~yaml
+>         version: '3'
+>         services:
+>           navigation:
+>               image: golunav
+>               container_name: navigation
+>               ports:
+>                   - "8082:8082"
+>               environment:
+>                   - WEBTITLE=GoluのNav
+>                   - COPYRIGHT_TEXT=咕噜Golu
+>                   - COPYRIGHT_LINK=https://www.golu-ljg.cn
+>                   - WEBSITE_PASSWORD=123456
+>                   - PORT=8082
+>                   - BAIDU_AK=aaaaaaaaaaaaaaadddddddddd
+>                   - HEFENG_KEY=dfefeffffffffffffffffff
+>         ~~~
+>         **运行：`docker-compose up -d`**
 > - 拉取镜像：
 >   暂无
