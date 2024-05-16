@@ -29,7 +29,7 @@ const logger = require("./LoggerTool");
 class NavDatabase {
     #db;
 
-    constructor({navDbPath = `${process.cwd()}/database/navDatabase.db`} = {}) {
+    constructor({navDbPath = '../database/navDatabase.db'} = {}) {
         // Nav数据库文件路径
         this.navDbPath = navDbPath; // 数据库文件路径
 
