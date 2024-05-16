@@ -20,8 +20,6 @@ RUN apk add --no-cache openssl
 RUN apk add --no-cache \
     python3 \
     python3-dev \
-    py3-setuptools \
-    py3-wheel \
     make \
     g++ \
     bash
