@@ -23,7 +23,7 @@ RUN apk update
 RUN apk add --no-cache python3 python3-dev py3-pip
 
 # 安装构建工具
-RUN apk add --no-cache make g++ bash
+RUN apk add --no-cache bash make g++
 
 # 创建符号链接以确保 python 命令指向 python3
 RUN ln -sf /usr/bin/python3 /usr/bin/python && \
