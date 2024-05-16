@@ -1,5 +1,5 @@
 # 使用带有 Node.js 和 git 的轻量级基础镜像
-FROM node:18-alpine
+FROM node:20-alpine
 
 # 设置镜像源 并测试
 RUN echo -e 'https://mirrors.aliyun.com/alpine/v3.6/main/\nhttps://mirrors.aliyun.com/alpine/v3.6/community/' > /etc/apk/repositories \
@@ -14,6 +14,26 @@ RUN apk add --no-cache git
 
 # 更新包列表并安装必要的软件包
 RUN apk add --no-cache openssl
+
+# ########## 安装Python3.8 ##################
+# 更新包列表并安装 Python 3.8 和 pip
+RUN apk update && \
+    apk add --no-cache \
+    python3 \
+    python3-dev \
+    py3-pip
+
+# 确认安装的 Python 版本
+RUN python3 --version && pip3 --version
+
+# 创建符号链接以确保 python 命令指向 python3
+RUN ln -sf /usr/bin/python3 /usr/bin/python && \
+    ln -sf /usr/bin/pip3 /usr/bin/pip
+
+# 确认符号链接是否正确
+RUN python --version && pip --version
+
+# ###############################################################
 
 # 设置工作目录
 WORKDIR /app
