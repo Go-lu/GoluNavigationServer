@@ -12,6 +12,11 @@ LABEL maintainer="Golu goluli@qq.com"
 # 安装 git
 RUN apk add --no-cache git
 
+# 更新包列表并安装必要的软件包
+RUN apt-get update && \
+    apt-get install -y git openssl && \
+    apt-get clean
+
 # 设置工作目录
 WORKDIR /app
 
