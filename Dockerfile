@@ -16,14 +16,14 @@ RUN apk add --no-cache git
 RUN apk add --no-cache openssl
 
 # ########## 安装Python3.8 ##################
-# 更新包列表并安装必要的构建工具和 Python 3.8
-RUN apk update && \
-    apk add --no-cache \
-    python3 \
-    python3-dev \
-    py3-pip \
-    make \
-    g++
+# 更新包列表
+RUN apk update
+
+# 安装 Python 3.8 和 pip
+RUN apk add --no-cache python3 python3-dev py3-pip
+
+# 安装构建工具
+RUN apk add --no-cache make g++ bash
 
 # 创建符号链接以确保 python 命令指向 python3
 RUN ln -sf /usr/bin/python3 /usr/bin/python && \
