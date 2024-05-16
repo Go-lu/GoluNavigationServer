@@ -1,7 +1,7 @@
 # 使用带有 Node.js 和 git 的轻量级基础镜像
 FROM node:20-alpine
 
-# 设置 Aliyun 镜像源并更新包列表
+# 设置 Aliyun 镜像源为3.13版本用以下载Python3.8并更新包列表
 RUN echo "https://mirrors.aliyun.com/alpine/v3.13/main" > /etc/apk/repositories && \
     echo "https://mirrors.aliyun.com/alpine/v3.13/community" >> /etc/apk/repositories && \
     apk update
@@ -19,13 +19,20 @@ RUN apk add --no-cache openssl
 # 安装必要的构建工具和 Python 3
 RUN apk add --no-cache \
     python3 \
-    python3-dev \
-    make \
-    g++ \
-    bash
+    python3-dev
 
 # 创建符号链接以确保 python 命令指向 python3
 RUN ln -sf /usr/bin/python3 /usr/bin/python
+
+# 设置 Aliyun 镜像源版本为3.19并更新包列表
+RUN echo "https://mirrors.aliyun.com/alpine/v3.19/main" > /etc/apk/repositories && \
+    echo "https://mirrors.aliyun.com/alpine/v3.19/community" >> /etc/apk/repositories && \
+    apk update
+
+RUN apk add --no-cache \
+    make \
+    g++ \
+    bash
 
 # 确认安装的 Python 版本和构建工具
 RUN python --version && make --version && g++ --version
