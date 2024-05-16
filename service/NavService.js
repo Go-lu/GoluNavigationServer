@@ -2,7 +2,7 @@ const path = require('path');
 const SqliteTool = require('../utils/SqliteTool')
 const logger = require('../utils/LoggerTool')
 const axios = require("axios");
-const HitokotoVO = require('/VO/HitokotoVO');
+const HitokotoVO = require('../VO/HitokotoVO');
 
 class NavService {
     #navMapper;

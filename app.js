@@ -6,10 +6,10 @@ const multer = require('multer'); // 引入 multer 模块
 const CryptoJS = require('crypto-js');
 const app = express();
 
-const NavService = require('/service/NavService');
-const NavDatabaseDTO = require('/DTO/NavDatabaseDTO');
-const logger = require('/utils/LoggerTool');
-const parseUrlTool = require('/utils/parseUrlTool');
+const NavService = require('./service/NavService');
+const NavDatabaseDTO = require('./DTO/NavDatabaseDTO');
+const logger = require('./utils/LoggerTool');
+const parseUrlTool = require('./utils/parseUrlTool');
 require('dotenv').config(); // 引入 .env 文件
 
 // 盐

@@ -20,7 +20,7 @@
  */
 const sqlite3 = require("sqlite3").verbose();
 const fs = require("fs");
-const logger = require("/LoggerTool");
+const logger = require("./LoggerTool");
 
 /**
  * 导出Nav数据库操作类
