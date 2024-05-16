@@ -22,23 +22,24 @@ RUN apk update && \
     build-base \
     wget \
     libffi-dev \
-    openssl-dev
+    openssl-dev \
+    bash
 
-# 添加特定版本的社区仓库
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.14/main" >> /etc/apk/repositories && \
-    echo "http://dl-cdn.alpinelinux.org/alpine/v3.14/community" >> /etc/apk/repositories
+# 下载并安装特定版本的 Python 3.8
+RUN wget https://www.python.org/ftp/python/3.8.10/Python-3.8.10.tgz && \
+    tar xzf Python-3.8.10.tgz && \
+    cd Python-3.8.10 && \
+    ./configure --enable-optimizations && \
+    make altinstall
 
-# 安装 Python 3.8
-RUN apk update && \
-    apk add --no-cache python3=3.8.10-r0 python3-dev=3.8.10-r0 py3-pip
-
-# 确认安装的 Python 版本
-RUN python3 --version
+# 清理安装文件
+RUN rm -rf /Python-3.8.10.tgz /Python-3.8.10
 
 # 为了确保使用 `python` 命令也指向 Python 3.8，可以创建一个符号链接
-RUN ln -sf python3 /usr/bin/python
+RUN ln -sf /usr/local/bin/python3.8 /usr/bin/python && \
+    ln -sf /usr/local/bin/pip3.8 /usr/bin/pip
 
-# 检查 Python 版本
+# 确认安装的 Python 版本
 RUN python --version
 
 # ###############################################################
