@@ -59,6 +59,10 @@ RUN rm -rf /tmp/app
 
 # 复制文件到运行目录
 COPY . .
+
+# 创建数据库目录并设置权限
+RUN mkdir -p /app/database && chmod -R 755 /app/database
+
 # 安装依赖
 RUN npm install
 

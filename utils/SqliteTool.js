@@ -29,7 +29,7 @@ const logger = require("./LoggerTool");
 class NavDatabase {
     #db;
 
-    constructor({navDbPath = '../database/navDatabase.db'} = {}) {
+    constructor({navDbPath = `${process.cwd()}/database/navDatabase.db`} = {}) {
         // Nav数据库文件路径
         this.navDbPath = navDbPath; // 数据库文件路径
 
@@ -50,7 +50,7 @@ class NavDatabase {
                                 (err) => {
                                     if (err) {
                                         logger.error("创建数据库表失败,原因 -> ");
-                                        logger.error(err);
+                                        logger.error(err.message);
                                         return;
                                     }
                                     logger.debug("创建数据库表<-website->成功");
@@ -62,7 +62,7 @@ class NavDatabase {
                                 (err) => {
                                     if (err) {
                                         logger.error("创建数据库表失败,原因 -> ");
-                                        logger.error(err);
+                                        logger.error(err.message);
                                         return;
                                     }
                                     logger.debug("创建数据库表<-hitokoto->成功");
@@ -76,7 +76,7 @@ class NavDatabase {
                         this.#db.close((err) => {
                             if (err) {
                                 logger.error("关闭数据库失败,原因 -> ");
-                                logger.error(err);
+                                logger.error(err.message);
                                 return;
                             }
                             logger.debug("关闭数据库成功");
