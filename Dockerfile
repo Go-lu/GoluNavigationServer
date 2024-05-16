@@ -1,5 +1,5 @@
 # 使用带有 Node.js 和 git 的轻量级基础镜像
-FROM node:18-alpine3.14
+FROM node:20-alpine
 
 # 设置镜像源 并测试
 RUN echo -e 'https://mirrors.aliyun.com/alpine/v3.6/main/\nhttps://mirrors.aliyun.com/alpine/v3.6/community/' > /etc/apk/repositories \
