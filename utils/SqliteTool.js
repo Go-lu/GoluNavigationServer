@@ -39,7 +39,7 @@ class NavDatabase {
             this.#db = new sqlite3.Database(this.navDbPath, (err) => {
                 if (err) {
                     logger.error("创建数据库文件失败,原因 -> ");
-                    logger.error(err);
+                    logger.error(err.message);
                 } else {
                     // 创建数据库表
                     try {
