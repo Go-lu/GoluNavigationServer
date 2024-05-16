@@ -24,9 +24,6 @@ RUN apk update && \
     libffi-dev \
     openssl-dev
 
-# 移除可能已存在的旧版本 Python
-RUN apk del python3
-
 # 添加特定版本的社区仓库
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.14/main" >> /etc/apk/repositories && \
     echo "http://dl-cdn.alpinelinux.org/alpine/v3.14/community" >> /etc/apk/repositories
