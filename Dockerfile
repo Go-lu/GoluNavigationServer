@@ -23,7 +23,6 @@ RUN apk update && \
     python3-dev \
     py3-pip \
     make \
-    g++ \
     bash
 
 # 创建符号链接以确保 python 命令指向 python3
