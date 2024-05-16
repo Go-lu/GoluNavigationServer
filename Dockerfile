@@ -2,8 +2,8 @@
 FROM node:20-alpine
 
 # 设置 Aliyun 镜像源并更新包列表
-RUN echo "https://mirrors.aliyun.com/alpine/v3.18/main" > /etc/apk/repositories && \
-    echo "https://mirrors.aliyun.com/alpine/v3.18/community" >> /etc/apk/repositories && \
+RUN echo "https://mirrors.aliyun.com/alpine/v3.13/main" > /etc/apk/repositories && \
+    echo "https://mirrors.aliyun.com/alpine/v3.13/community" >> /etc/apk/repositories && \
     apk update
 #    && apk --no-cache add ttf-dejavu fontconfig
 # 设置维护者信息
@@ -16,19 +16,14 @@ RUN apk add --no-cache git
 RUN apk add --no-cache openssl
 
 # ########## 安装Python3.8 ##################
-# 安装必要的构建工具和 Python 3
+# 安装 Python 3.8 和相关构建工具
 RUN apk add --no-cache \
-    python3 \
-    python3-dev \
-    py3-setuptools \
-    py3-wheel \
+    python3=3.8.10-r0 \
+    python3-dev=3.8.10-r0 \
+    py3-pip \
     make \
     g++ \
     bash
-
-# 安装 pip
-RUN python3 -m ensurepip && \
-    pip3 install --upgrade pip
 
 # 创建符号链接以确保 python 命令指向 python3
 RUN ln -sf /usr/bin/python3 /usr/bin/python && \
