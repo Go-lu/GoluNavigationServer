@@ -15,6 +15,37 @@ RUN apk add --no-cache git
 # 更新包列表并安装必要的软件包
 RUN apk add --no-cache openssl
 
+# ########## 安装Python3.8 ##################
+# 更新包列表并安装必要的软件包
+RUN apk update && \
+    apk add --no-cache \
+    build-base \
+    wget \
+    libffi-dev \
+    openssl-dev
+
+# 移除可能已存在的旧版本 Python
+RUN apk del python3
+
+# 添加特定版本的社区仓库
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.14/main" >> /etc/apk/repositories && \
+    echo "http://dl-cdn.alpinelinux.org/alpine/v3.14/community" >> /etc/apk/repositories
+
+# 安装 Python 3.8
+RUN apk update && \
+    apk add --no-cache python3=3.8.10-r0 python3-dev=3.8.10-r0 py3-pip
+
+# 确认安装的 Python 版本
+RUN python3 --version
+
+# 为了确保使用 `python` 命令也指向 Python 3.8，可以创建一个符号链接
+RUN ln -sf python3 /usr/bin/python
+
+# 检查 Python 版本
+RUN python --version
+
+# ###############################################################
+
 # 设置工作目录
 WORKDIR /app
 
