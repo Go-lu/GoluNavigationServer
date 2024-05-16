@@ -35,6 +35,7 @@
 
 
 ### 二、Docker运行（不需要手动打包前端项目）：  
+#### 注意：暂时没有数据导出，建议创建容器时将数据库文件挂载到宿主机目录，数据库文件路径：`/app/database/navDatabase.db`
 > - 自打包镜像：
 >   - 拉取后端仓库代码 `git clone https://gitee.com/golu-ljg/golu-navigation-server.git`
 >   - 进入到项目根目录 `cd GoluNavigationServer`
