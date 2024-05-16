@@ -1,7 +1,8 @@
 <h1 style="text-align: center;">GoluNavigationServer</h1>
 
-## 此项目为[GoluNavigationWeb](https://gitee.com/golu-ljg/golu-navigation-web)项目的后端，需搭配使用
+## 此项目为[GoluNavigationWeb](https://github.com/Go-lu/GoluNavigationWeb)项目的后端，需搭配使用
 ### 一个简洁且现代化的导航页，前端使用vue，后端node，数据持久化到sqlite
+### [在gitee看此项目](https://github.com/Go-lu/GoluNavigationServer)
 
 ##### 设计效果：
 ###### _点此预览： [Demo](http://demo.nav.golu.top)_
@@ -25,7 +26,7 @@
 >    >
 >    > `npm install`
 >    >
-> 2. 将[GoluNavigationWeb](https://gitee.com/golu-ljg/golu-navigation-web)前端项目打包后的dist目录扔进后端项目根目录中
+> 2. 将[GoluNavigationWeb](https://github.com/Go-lu/GoluNavigationWeb)前端项目打包后的dist目录扔进后端项目根目录中
 > 3. 修改项目根目录下的`.env`配置文件
 > 4.  运行：
 >    >
@@ -38,7 +39,7 @@
 #### 注意：暂时没有数据导出，建议创建容器时将数据库文件挂载到宿主机目录，数据库文件路径：`/app/database/navDatabase.db`
 > ***目前已发布镜像，可直接创建容器，镜像为：`goolucky/golu-nav:1.0.0`***
 > - 自打包镜像：
->   - 拉取后端仓库代码 `git clone https://gitee.com/golu-ljg/golu-navigation-server.git`
+>   - 拉取后端仓库代码 `git clone https://github.com/Go-lu/GoluNavigationServer.git`
 >   - 进入到项目根目录 `cd GoluNavigationServer`
 >   - 构建镜像 `docker build -t golunavserver .`
 >   - 运行镜像 
