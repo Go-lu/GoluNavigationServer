@@ -2,10 +2,10 @@
 FROM node:20-alpine
 
 # 设置镜像源 并测试
-RUN echo -e 'https://mirrors.aliyun.com/alpine/v3.6/main/\nhttps://mirrors.aliyun.com/alpine/v3.6/community/' > /etc/apk/repositories \
-    && apk update \
-    && apk upgrade \
-    && apk --no-cache add ttf-dejavu fontconfig
+#RUN echo -e 'https://mirrors.aliyun.com/alpine/v3.6/main/\nhttps://mirrors.aliyun.com/alpine/v3.6/community/' > /etc/apk/repositories \
+#    && apk update \
+#    && apk upgrade \
+#    && apk --no-cache add ttf-dejavu fontconfig
 # 设置维护者信息
 LABEL maintainer="Golu goluli@qq.com"
 
