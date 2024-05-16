@@ -24,10 +24,6 @@ RUN apk add --no-cache \
     g++ \
     bash
 
-# 安装 pip
-RUN python3 -m ensurepip && \
-    pip3 install --upgrade pip
-
 # 创建符号链接以确保 python 命令指向 python3
 RUN ln -sf /usr/bin/python3 /usr/bin/python && \
     ln -sf /usr/bin/pip3 /usr/bin/pip
