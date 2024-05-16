@@ -15,6 +15,44 @@ RUN apk add --no-cache git
 # 更新包列表并安装必要的软件包
 RUN apk add --no-cache openssl
 
+# ########## 安装Python3.8 ##################
+# 更新包列表
+RUN apk update
+
+# 安装基础构建工具
+RUN apk add --no-cache build-base
+
+# 安装 wget
+RUN apk add --no-cache wget
+
+# 安装 libffi-dev
+RUN apk add --no-cache libffi-dev
+
+# 安装 openssl-dev
+RUN apk add --no-cache openssl-dev
+
+# 安装 bash
+RUN apk add --no-cache bash
+
+# 下载并安装特定版本的 Python 3.8
+RUN wget https://www.python.org/ftp/python/3.8.10/Python-3.8.10.tgz && \
+    tar xzf Python-3.8.10.tgz && \
+    cd Python-3.8.10 && \
+    ./configure --enable-optimizations && \
+    make altinstall
+
+# 清理安装文件
+RUN rm -rf /Python-3.8.10.tgz /Python-3.8.10
+
+# 为了确保使用 `python` 命令也指向 Python 3.8，可以创建一个符号链接
+RUN ln -sf /usr/local/bin/python3.8 /usr/bin/python && \
+    ln -sf /usr/local/bin/pip3.8 /usr/bin/pip
+
+# 确认安装的 Python 版本
+RUN python --version
+
+# ###############################################################
+
 # 设置工作目录
 WORKDIR /app
 
