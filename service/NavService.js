@@ -1,8 +1,8 @@
 const path = require('path');
-const SqliteTool = require(path.join(__dirname, '../utils/SqliteTool.js'))
-const logger = require(path.join(__dirname, '../utils/LoggerTool.js'))
+const SqliteTool = require('../utils/SqliteTool')
+const logger = require('../utils/LoggerTool')
 const axios = require("axios");
-const HitokotoVO = require(path.join(__dirname, "../VO/HitokotoVO.js"));
+const HitokotoVO = require('/VO/HitokotoVO');
 
 class NavService {
     #navMapper;
