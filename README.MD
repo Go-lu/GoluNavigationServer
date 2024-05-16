@@ -1,6 +1,6 @@
 <h1 style="text-align: center;">GoluNavigationServer</h1>
 
-## 此项目为[GoluNavigationWeb](https://github.com/Go-lu/GoluNavigationWeb)项目的后端，需搭配使用
+## 此项目为[GoluNavigationWeb](https://gitee.com/golu-ljg/golu-navigation-web)项目的后端，需搭配使用
 ### 一个简洁且现代化的导航页，前端使用vue，后端node，数据持久化到sqlite
 
 ##### 设计效果：
@@ -25,7 +25,7 @@
 >    >
 >    > `npm install`
 >    >
-> 2. 将[GoluNavigationWeb](https://github.com/Go-lu/GoluNavigationWeb)前端项目打包后的dist目录扔进后端项目根目录中
+> 2. 将[GoluNavigationWeb](https://gitee.com/golu-ljg/golu-navigation-web)前端项目打包后的dist目录扔进后端项目根目录中
 > 3. 修改项目根目录下的`.env`配置文件
 > 4.  运行：
 >    >
@@ -36,7 +36,7 @@
 
 ### 二、Docker运行（不需要手动打包前端项目）：  
 > - 自打包镜像：
->   - 拉取后端仓库代码 `git clone https://github.com/Go-lu/GoluNavigationServer.git`
+>   - 拉取后端仓库代码 `git clone https://gitee.com/golu-ljg/golu-navigation-server.git`
 >   - 进入到项目根目录 `cd GoluNavigationServer`
 >   - 构建镜像 `docker build -t golunavserver .`
 >   - 运行镜像 
@@ -74,19 +74,21 @@
 >         version: '3'
 >         services:
 >           navigation:
->               image: golunav
->               container_name: navigation
->               ports:
->                   - "8082:8082"
->               environment:
->                   - WEBTITLE=GoluのNav
->                   - COPYRIGHT_TEXT=咕噜Golu
->                   - COPYRIGHT_LINK=https://www.golu-ljg.cn
->                   - WEBSITE_PASSWORD=123456
->                   - PORT=8082
->                   - BAIDU_AK=aaaaaaaaaaaaaaadddddddddd
->                   - HEFENG_KEY=dfefeffffffffffffffffff
->         ~~~
->         **运行：`docker-compose up -d`**
+>             image: golunav
+>             container_name: navigation
+>             ports:
+>               - "8082:8082"
+>             volumes:
+>               - ./database:/app
+>             environment:
+>               - WEBTITLE=GoluのNav
+>               - COPYRIGHT_TEXT=咕噜Golu
+>               - COPYRIGHT_LINK=https://www.golu-ljg.cn
+>               - WEBSITE_PASSWORD=123456
+>               - PORT=8082
+>               - BAIDU_AK=aaaaaaaaaaaaaaadddddddddd
+>               - HEFENG_KEY=dfefeffffffffffffffffff
+>            ~~~
+>            **运行：`docker-compose up -d`**
 > - 拉取镜像：
 >   暂无

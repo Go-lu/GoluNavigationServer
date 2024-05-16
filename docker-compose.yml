@@ -1,0 +1,17 @@
+version: '3'
+services:
+  navigation:
+    image: golunav
+    container_name: navigation
+    ports:
+      - "8082:8082"
+    volumes:
+      - ./database:/app
+    environment:
+      - WEBTITLE=GoluのNav
+      - COPYRIGHT_TEXT=咕噜Golu
+      - COPYRIGHT_LINK=https://www.golu-ljg.cn
+      - WEBSITE_PASSWORD=123456
+      - PORT=8082
+      - BAIDU_AK=aaaaaaaaaaaaaaadddddddddd
+      - HEFENG_KEY=dfefeffffffffffffffffff
