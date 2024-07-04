@@ -20,9 +20,9 @@ const parseUrlTool = async (url) => {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
             }
         });
-        if (res.status === 200){
+        if (res.status === 200) {
             const $ = cheerio.load(res.data);
-            let title = $('title').text() || url.replace(/^https?:\/\//, '').replace(/\//g, '');
+            let title = $('title').text() || url.replace(/^(https?:\/\/)?[^\/]+(\/)?$/, '').replace(/\//g, '');
             let linkTag = $('head link[rel="shortcut icon"]');
             // 特殊处理
             if (linkTag.toString() === "")
@@ -33,10 +33,12 @@ const parseUrlTool = async (url) => {
             logger.info(`title -> ${title}`);
             logger.info(`icon -> ${icon}`);
             if (!icon.startsWith('http')) {
+                // Capture the protocol and domain part of the URL
+                const baseUrl = url.match(/^(https?:\/\/[^\/]+)/)[0];
                 if (icon.startsWith('/'))
-                    icon = url.replace(/\//g, '') + icon;
+                    icon = baseUrl + icon;
                 else
-                    icon = url.replace(/\//g, '') + '/' + icon;
+                    icon = baseUrl + '/' + icon;
             }
             return {
                 title,
