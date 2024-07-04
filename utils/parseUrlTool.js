@@ -23,7 +23,11 @@ const parseUrlTool = async (url) => {
         if (res.status === 200){
             const $ = cheerio.load(res.data);
             let title = $('title').text() || url.replace(/^https?:\/\//, '').replace(/\//g, '');
-            const linkTag = $('head link[rel="shortcut icon"]');
+            let linkTag = $('head link[rel="shortcut icon"]');
+            // 特殊处理
+            if (linkTag.toString() === "")
+                linkTag = $('head link[rel="icon"]').first();
+
             let icon = linkTag.attr('href') || 'favicon.ico';
             logger.info(`解析网站成功 -> `);
             logger.info(`title -> ${title}`);
