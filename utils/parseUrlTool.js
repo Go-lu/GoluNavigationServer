@@ -6,6 +6,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const logger = require('./LoggerTool');
+const fs = require('fs');
 
 /**
  * 解析网站
@@ -39,12 +40,48 @@ const parseUrlTool = async (url) => {
                     icon = baseUrl + icon;
                 else
                     icon = baseUrl + '/' + icon;
+
+                // 对内网的处理 - 下载到本地后返回本地路径
+                if (icon.indexOf("qh") !== -1) {
+                    const img = await axios.get(icon, {
+                        responseType: 'arraybuffer',  // 确保获取的响应是二进制数据
+                        timeout: 5000,
+                        headers: {
+                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+                        }
+                    });
+
+                    // 根据icon链接获取图片后缀
+                    let endName = "png";
+                    if (icon.indexOf("icon") !== -1)
+                        endName = "ico";
+                    if (icon.indexOf("jepg") !== -1)
+                        endName = "jpeg";
+                    if (icon.indexOf("jpg") !== -1)
+                        endName = "jpg";
+                    if (icon.indexOf("gif") !== -1)
+                        endName = "gif";
+                    if (icon.indexOf("svg") !== -1)
+                        endName = "svg";
+                    if (icon.indexOf("webp") !== -1)
+                        endName = "webp";
+                    if (icon.indexOf("bmp") !== -1)
+                        endName = "bmp";
+                    if (icon.indexOf("tiff") !== -1)
+                        endName = "tiff";
+
+                    const imgName = `${Date.now()}.${endName}`;
+                    // 根据时间戳生成图片名称，图片后缀从icon链接中获取
+                    const imgPath = `${process.cwd()}/public/imgs/${imgName}`;
+                    fs.writeFileSync(imgPath, img.data);
+                    icon = `/imgs/${imgName}`;
+                }
             }
             return {
                 title,
                 icon
             };
-        }else {
+        } else {
             logger.error('解析网站请求失败! 原因 ->');
             logger.error(res);
         }
