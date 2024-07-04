@@ -42,7 +42,7 @@ const parseUrlTool = async (url) => {
                     icon = baseUrl + '/' + icon;
 
                 // 对内网的处理 - 下载到本地后返回本地路径
-                if (icon.indexOf("qh") !== -1) {
+                if (icon.indexOf("192.168") !== -1) {
                     const img = await axios.get(icon, {
                         responseType: 'arraybuffer',  // 确保获取的响应是二进制数据
                         timeout: 5000,
